@@ -3,7 +3,7 @@ pragma solidity ^0.4.13;
 contract PushButton {
 
     uint public startBlock;
-    uint public interval = 108 * 60 / 4; // 108 minutes
+    uint public interval = 108 * 60 / 4; // 108 minutes in kovan testnet
     uint public nextTimeoutBlock;
     uint public totalPush;
     string public title;
@@ -27,7 +27,7 @@ contract PushButton {
         checkTitle();
         ButtonPushed(msg.sender, totalPush, nextTimeoutBlock);
         return true;
-    }
+    }   
 
     function getBlock() constant returns (uint) {
         return block.number;

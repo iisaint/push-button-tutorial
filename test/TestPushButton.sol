@@ -6,16 +6,15 @@ import "../contracts/PushButton.sol";
 import "./helpers/PushButtonMock.sol";
 
 contract TestPushButton {
+  PushButton pb = PushButton(DeployedAddresses.PushButton());
 
   function testInitialUsingDeployedContract() {
-    PushButton pb = PushButton(DeployedAddresses.PushButton());
-    Assert.equal(pb.interval(), 30, "interval should be 30 blocks long");
-    Assert.equal(pb.nextTimeoutBlock(), pb.startBlock() + 30, "nextTimeoutBlock should be sum of startblock and interval");
+    Assert.equal(pb.interval(), 1620, "interval should be 1620 blocks long");
+    Assert.equal(pb.nextTimeoutBlock(), pb.startBlock() + 1620, "nextTimeoutBlock should be sum of startblock and interval");
     Assert.equal(pb.totalPush(), 0, "totalPush should be 0");
   }
 
   function testUserCanPush() {
-    PushButton pb = PushButton(DeployedAddresses.PushButton());
     uint totalPush = pb.totalPush();
     uint currentBlock = pb.getBlock();
     Assert.equal(pb.push(), true, "push should success");
