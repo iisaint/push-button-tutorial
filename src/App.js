@@ -8,7 +8,7 @@ import './css/open-sans.css'
 import './css/pure-min.css'
 import './App.css'
 
-const contractAddress = '0x692cfd19d181f50469f85d30b054457915f51fb1';
+const contractAddress = '0xb46c8a57f32325a502fa2a3321dd583435f4cae3';
 
 class App extends Component {
   constructor(props) {
@@ -28,16 +28,13 @@ class App extends Component {
 
   componentWillMount() {
 
-    getWeb3
-    .then(results => {
+    getWeb3.then(results => {
       this.setState({
         web3: results.web3
       })
-
       // Instantiate contract once web3 provided.
       this.instantiateContract()
-    })
-    .catch(() => {
+    }).catch(() => {
       console.log('Error finding web3.')
     })
 
